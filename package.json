@@ -1,0 +1,12 @@
+{
+  "name": "deepl-traductor-automatic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "author": "Allnnde",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "deepl-node": "^1.8.0"
+  }
+}
