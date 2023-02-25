@@ -2,9 +2,6 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import * as deepl from "deepl-node";
-import * as dotenv from "dotenv";
-dotenv.config();
-console.log(process.env); // remove this after you've confirmed it is working
 
 const CONFIG = JSON.parse(
   fs.readFileSync("./db-extractor/db-extractor-config.json", "utf-8")
