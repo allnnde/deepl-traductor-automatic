@@ -6,7 +6,19 @@
   "author": "Allnnde",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+    "db-extractor": "node ./db-extractor/db-extractor.js",
+    "exec": "node \"./db-extractor/db-extractor.js\" && node \"main.js\""
+  },
   "dependencies": {
-    "deepl-node": "^1.8.0"
+    "deepl-node": "^1.8.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@crowdin/cli": "^3.7.9",
+    "@prantlf/jsonlint": "^11.6.0",
+    "@zip.js/zip.js": "^2.6.61",
+    "json": "^11.0.0",
+    "path-value": "^0.9.5"
   }
 }
