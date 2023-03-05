@@ -8,9 +8,11 @@
   "type": "module",
   "scripts": {
     "db-extractor": "node ./db-extractor/db-extractor.js",
-    "exec": "node \"./db-extractor/db-extractor.js\" && node \"main.js\""
+    "exec": "node \"./db-extractor/db-extractor.js\" && node \"main.js\"",
+    "main": "node \"main.js\""
   },
   "dependencies": {
+    "axios": "^1.3.4",
     "deepl-node": "^1.8.0",
     "dotenv": "^16.0.3"
   },

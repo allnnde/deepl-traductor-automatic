@@ -139,13 +139,6 @@ function extractPack(packName, packConfig, dbFiles) {
         // Build comparison database?
         const createComparisonData = resolvePath(packConfig, `packCompendiumMapping.${packName}`).exists ? true : false;
         const compendiumName = createComparisonData ? packConfig.packCompendiumMapping[packName] : packName;
-
-        
-        console.log(packConfig.packCompendiumMapping);
-
-
-        console.log(createComparisonData +` ${packName} : ${compendiumName}`);
-
         // Initialize structure of neccessary
         if (createComparisonData) {
             actorItemComparison[compendiumName] = actorItemComparison[compendiumName] || {};
