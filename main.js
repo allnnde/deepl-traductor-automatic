@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 import axios from "axios";
 
-const CONFIG = JSON.parse(fs.readFileSync("./db-extractor/db-extractor-config.json", "utf-8"));
+const CONFIG = JSON.parse(fs.readFileSync("./pack-extractor/pack-extractor-config.json", "utf-8"));
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -192,6 +192,7 @@ const totalLines = calculateTotalLines(files);
 
 console.log("-----> Iniciando Tranduccion : " + new Date().toLocaleString());
 for (const file of files) {
+  console.log("-----> Traducciendo : " + file);
   const data = fs.readFileSync(file);
 
   const object = JSON.parse(data);
@@ -202,9 +203,16 @@ for (const file of files) {
   obj.label = objectOriginal.label;
   obj.mapping = objectOriginal.mapping;
 
-  let pathOfCompendiumEn = CONFIG.filePaths["i18n"].replace("/", "\\").replace("/", "\\");
-  let pathOfCompendiumEs = CONFIG.filePaths["i18n-es"].replace("/", "\\").replace("/", "\\");
-  let final = file.replace(pathOfCompendiumEn, pathOfCompendiumEs);
+  let pathOfCompendiumEn = CONFIG.filePaths["i18n"].replace("/", "\\").replace("/", "\\").replace(".","");
+  let pathOfCompendiumEs = "./translation/es".replace("/", "\\").replace("/", "\\").replace(".","");
+
+  console.log(pathOfCompendiumEn);
+  console.log(pathOfCompendiumEs);
+  let final = file.replace(pathOfCompendiumEn, pathOfCompendiumEs)
+  .replace("action-en.json","action-es.json")
+  .replace("en.json","es.json")
+  .replace("kingmaker-en.json","kingmaker-es.json")
+  .replace("re-en.json","re-es.json");
 
   var dirname = path.dirname(final);
 
@@ -212,6 +220,7 @@ for (const file of files) {
     fs.mkdirSync(dirname, { recursive: true });
   }
   fs.writeFileSync(path.join(final), JSON.stringify(obj));
+  console.log("-----> Guardando : " + final);
 }
 console.log("-----> Finalizando Tranduccion : " + new Date().toLocaleTimeString());
 
